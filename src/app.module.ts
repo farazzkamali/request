@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -21,6 +22,10 @@ import { UsersModule } from './users/users.module';
       logging: true,
     }),
     UsersModule,
+    JwtModule.register({
+      secret: 'your-secret-key', // Replace with your actual secret key
+      signOptions: { expiresIn: '1h' }, // Set the token expiration time
+    }),
 ],
 
   controllers: [],
