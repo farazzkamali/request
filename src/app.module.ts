@@ -4,6 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
+import { GatewayModule } from './gateway/gateway.module';
+
+
+
 
 @Module({
   imports: [
@@ -26,9 +30,10 @@ import { JwtModule } from '@nestjs/jwt';
       secret: 'your-secret-key', // Replace with your actual secret key
       signOptions: { expiresIn: '1h' }, // Set the token expiration time
     }),
+    GatewayModule,
 ],
 
   controllers: [],
-  providers: [],
+  providers: []
 })
 export class AppModule {}
